@@ -34,11 +34,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
+import com.mohaberabi.composedeepdive.animation.LayoutAnimationScreen
 import com.mohaberabi.composedeepdive.interaction.DragabbleScreen
 import com.mohaberabi.composedeepdive.interaction.FocusScreen
 import com.mohaberabi.composedeepdive.layouts.MinMapItem
 import com.mohaberabi.composedeepdive.layouts.MindMappingScreen
 import com.mohaberabi.composedeepdive.layouts.SubComposePagedRow
+import com.mohaberabi.composedeepdive.optimizations.CounterScreenRoot
 import com.mohaberabi.composedeepdive.sideeffects.RememberUpdatedStateScreen
 import com.mohaberabi.composedeepdive.ui.theme.ComposeDeepDiveTheme
 
@@ -48,12 +50,15 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             ComposeDeepDiveTheme {
-                RememberUpdatedStateScreen()
+                Scaffold { padding ->
+                    CounterScreenRoot(
+                        modifier = Modifier
+                            .padding(padding)
+                            .padding(20.dp)
+                    )
+                }
             }
-
-
         }
     }
-
 }
 
